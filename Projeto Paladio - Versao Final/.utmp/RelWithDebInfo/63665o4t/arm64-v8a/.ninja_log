@@ -1,0 +1,11 @@
+# ninja log v5
+108	2684	7549720601575666	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	9cd2d80e479c58f8
+65	5233	7549720625494651	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	30be3e8379d3e4e7
+72	5346	7549720626554732	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	8409f446f91f1c0f
+93	5579	7549720630495049	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	4d5e22ffbbffce1
+100	5677	7549720631385109	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	cee50efc9a082366
+2	5808	7549720632655209	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	32b9677406c202fc
+80	6313	7549720637465591	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	fe39919f5448e5fc
+2688	6406	7549720634585420	C:/Users/00115767/Desktop/Projeto Paladio - Versao Final/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/63665o4t/obj/arm64-v8a/libswappywrapper.so	7e59b5a77dd445df
+51	6774	7549720642449376	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	62903fc6e021eb20
+6774	7313	7549720646722884	C:/Users/00115767/Desktop/Projeto Paladio - Versao Final/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/63665o4t/obj/arm64-v8a/libgame.so	2ab171474dd340de
