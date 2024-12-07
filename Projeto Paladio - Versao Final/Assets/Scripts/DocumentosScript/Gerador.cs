@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Gerador : MonoBehaviour
 {
+    /*Var do objeto dos nomes*/
+
+    public NamesManager nomesManager;  // Referência ao nome
+
     [HideInInspector] public string nome, sobrenome;
-    public string[] nomeM, nomeF, sobrenomeL;
+
+    public List<string> nomeM, nomeF, sobrenomeL = new List<string>();
+
     [HideInInspector] public string ndr;
     [HideInInspector] public string rpfL;
     [HideInInspector] public int rpfN;
@@ -42,7 +49,6 @@ public class Gerador : MonoBehaviour
     public bool coInvalido = false;
     public bool notasInvalido = false;
     public bool rendaInvalido = false;
-    public bool corInvalido = false;
 
     [SerializeField] public List<string> informacoesInvalidas = new List<string>();
     private List<string> informacoesInvalidasO = new List<string>();
@@ -68,6 +74,21 @@ public class Gerador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TextAsset jsonFile = Resources.Load<TextAsset>("names");
+
+        NamesData jsonObjectName = JsonUtility.FromJson<NamesData>(jsonFile.text);
+
+        if (jsonObjectName.sobrenomes == null || jsonObjectName.sobrenomes.Count == 0)
+        {
+            Debug.LogError("No jsonObjectName loaded from the JSON file. Please check the file format.");
+            return;
+        }
+
+        nomeM = jsonObjectName.masculinos;
+        nomeF = jsonObjectName.femininos;
+        sobrenomeL = jsonObjectName.sobrenomes;
+
+
         if (nomeInvalido)
             informacoesInvalidas.Add(nameof(nomeInvalido));
 
@@ -95,9 +116,6 @@ public class Gerador : MonoBehaviour
         if (rendaInvalido)
             informacoesInvalidas.Add(nameof(rendaInvalido));
 
-        if (corInvalido)
-            informacoesInvalidas.Add(nameof(corInvalido));
-
         if (medicoDisponivel == false)
             informacoesInvalidas.Remove("cdInvalido");
 
@@ -108,7 +126,6 @@ public class Gerador : MonoBehaviour
         {
             informacoesInvalidas.Remove("notasInvalido");
             informacoesInvalidas.Remove("rendaInvalido");
-            informacoesInvalidas.Remove("corInvalido");
         }
 
         if (medicoDisponivel)
@@ -152,6 +169,7 @@ public class Gerador : MonoBehaviour
     {
         LimparPedidoAnterior();
         Sexo();
+        AvatarGenerator.instance.GerarAvatar();
         Nome();
         NDR();
         RPF();
@@ -180,7 +198,7 @@ public class Gerador : MonoBehaviour
             documentosInvalidos.Add(documentosInvalidosO[i]);
         }
 
-        if (nomeInvalido == false && ndrInvalido == false && rpfInvalido == false && ddnInvalido == false && sexoInvalido == false && cdInvalido == false && coInvalido == false && notasInvalido == false && rendaInvalido == false && corInvalido == false)
+        if (nomeInvalido == false && ndrInvalido == false && rpfInvalido == false && ddnInvalido == false && sexoInvalido == false && cdInvalido == false && coInvalido == false && notasInvalido == false && rendaInvalido == false)
         {
             todasAsInformacoesInvalidas = true;
         }
@@ -242,7 +260,6 @@ public class Gerador : MonoBehaviour
                 informacoesInvalidas.Remove("coInvalido");
                 informacoesInvalidas.Remove("notasInvalido");
                 informacoesInvalidas.Remove("rendaInvalido");
-                informacoesInvalidas.Remove("corInvalido");
                 documentosInvalidos.Remove("boInvalido");
                 documentosInvalidos.Remove("heInvalido");
                 documentosInvalidos.Remove("cdrInvalido");
@@ -256,7 +273,6 @@ public class Gerador : MonoBehaviour
                 informacoesInvalidas.Remove("cdInvalido");
                 informacoesInvalidas.Remove("notasInvalido");
                 informacoesInvalidas.Remove("rendaInvalido");
-                informacoesInvalidas.Remove("corInvalido");
                 documentosInvalidos.Remove("heInvalido");
                 documentosInvalidos.Remove("cdrInvalido");
                 Debug.Log("Pedido Abuso");
@@ -551,16 +567,6 @@ public class Gerador : MonoBehaviour
                     documentosInvalidos.Remove("heInvalido");
                     Debug.Log("A renda tá errado");
                     break;
-
-                case "corInvalido":
-                    ComprovanteDeRenda.instance.Cor();
-                    informacaoInvalida = "Cor";
-                    documentosInvalidos.Remove("duInvalido");
-                    documentosInvalidos.Remove("laudoInvalido");
-                    documentosInvalidos.Remove("boInvalido");
-                    documentosInvalidos.Remove("heInvalido");
-                    Debug.Log("A cor tá errado");
-                    break;
             }
 
             string documento = documentosInvalidos[Random.Range(0, documentosInvalidos.Count)];
@@ -600,4 +606,12 @@ public class Gerador : MonoBehaviour
             Logic2.instance.ContadorValido();
         }
     }
+}
+
+[System.Serializable]
+public class NamesData
+{
+    public List<string> femininos;
+    public List<string> masculinos;
+    public List<string> sobrenomes;
 }

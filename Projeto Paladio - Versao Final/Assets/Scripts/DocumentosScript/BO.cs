@@ -81,7 +81,7 @@ public class BO : MonoBehaviour
 
         if (Gerador.instance.ano > 2106)
         {
-            ndrText.text = "Nome do responsavel: " + Gerador.instance.ndr;
+            ndrText.text = "Nome do responsavel: \n" + Gerador.instance.ndr;
         }
 
         else

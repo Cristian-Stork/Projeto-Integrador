@@ -287,7 +287,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ArcadeCutout_0: -2895373612693048137
+      ArcadeCutout_1: -8414208809508039712
+      ArcadeCutout_2: -7112086093759198479
+      ArcadeCutout_3: -2824222369700368458
+      ArcadeCutout_4: -3942213074763326365
+      ArcadeCutout_5: -6461552836962935329
+      ArcadeCutout_6: 8263916385944776945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

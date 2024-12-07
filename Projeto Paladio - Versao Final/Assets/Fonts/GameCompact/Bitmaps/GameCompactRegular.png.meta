@@ -743,7 +743,33 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GameCompactRegular_0: -4453020350693270305
+      GameCompactRegular_1: -9074056909523311784
+      GameCompactRegular_10: -7644096316644881630
+      GameCompactRegular_11: -8945983672797918460
+      GameCompactRegular_12: -6009817306852852663
+      GameCompactRegular_13: -3418348299254148017
+      GameCompactRegular_14: -3700425993878030992
+      GameCompactRegular_15: -7335494312586427751
+      GameCompactRegular_16: 4536738807084716830
+      GameCompactRegular_17: -7242725859805737049
+      GameCompactRegular_18: 2642736630207266832
+      GameCompactRegular_19: 5984483264774011412
+      GameCompactRegular_2: 3542446663051951293
+      GameCompactRegular_20: -8188645976986713982
+      GameCompactRegular_21: -1293188611913037162
+      GameCompactRegular_22: 9124008138330200751
+      GameCompactRegular_23: -4470111448241602996
+      GameCompactRegular_24: -3333588532264609620
+      GameCompactRegular_25: -7612410153351734802
+      GameCompactRegular_3: 7964914875843833118
+      GameCompactRegular_4: 729638102400529086
+      GameCompactRegular_5: 4358104369897549126
+      GameCompactRegular_6: -3108445212040124537
+      GameCompactRegular_7: -4453932910617597092
+      GameCompactRegular_8: -1125622431285727638
+      GameCompactRegular_9: 2939681016497182408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

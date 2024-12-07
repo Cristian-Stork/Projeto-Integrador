@@ -18,6 +18,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject cdrManualCanvas;
     public GameObject confirmarCanvas;
     public GameObject respostaPanel;
+    public Image respostaImage;
     public GameObject comecarPanel;
 
     [SerializeField] private List<GameObject> documentosMedico = new List<GameObject>();
@@ -44,6 +45,8 @@ public class ButtonManager : MonoBehaviour
     [Header("Sprites")]
     [SerializeField] private Sprite manualFechado;
     [SerializeField] private Sprite manualAberto;
+    [SerializeField] private Sprite certinho;
+    [SerializeField] private Sprite xizinho;
 
     private bool aceitou = false;
     private bool rejeitou = false;
@@ -65,6 +68,19 @@ public class ButtonManager : MonoBehaviour
         manuaisEscolar.Add(cdrManualCanvas);
 
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (contador == 0)
+        {
+            botaoManual.image.color = new Color(0, 0.5f, 0.5f, 1);
+        }
+
+        else
+        {
+            botaoManual.image.color = new Color(0, 1, 1, 1);
+        }
     }
 
     public void Começar()
@@ -104,6 +120,10 @@ public class ButtonManager : MonoBehaviour
                 respostaText.text = "Você acertou. O pedido desse cidadão era valido";
                 feedbackText.text = " ";
 
+                respostaImage.sprite = certinho;
+
+                respostaPanel.GetComponent<Image>().color = new Color(0.75f, 1, 0.75f, 1);
+
                 Despesas.instance.salario += Orcamento.instance.porcentagem;
             }
 
@@ -111,6 +131,10 @@ public class ButtonManager : MonoBehaviour
             {
                 respostaText.text = "Você errou. O pedido desse cidadão era invalido";
                 feedbackText.text = "Motivo da invalidez: " + Gerador.instance.informacaoInvalida;
+
+                respostaImage.sprite = xizinho;
+
+                respostaPanel.GetComponent<Image>().color = new Color(1, 0.5f, 0.5f, 1);
             }
         }
 
@@ -120,12 +144,20 @@ public class ButtonManager : MonoBehaviour
             {
                 respostaText.text = "Você errou. O pedido desse cidadão era valido";
                 feedbackText.text = " ";
+
+                respostaImage.sprite = xizinho;
+
+                respostaPanel.GetComponent<Image>().color = new Color(1, 0.5f, 0.5f, 1);
             }
 
             else
             {
                 respostaText.text = "Você acertou. O pedido desse cidadão era invalido";
                 feedbackText.text = "Motivo da invalidez: " + Gerador.instance.informacaoInvalida;
+
+                respostaImage.sprite = certinho;
+
+                respostaPanel.GetComponent<Image>().color = new Color(0.75f, 1, 0.75f, 1);
 
                 Despesas.instance.salario += Orcamento.instance.porcentagem;
             }

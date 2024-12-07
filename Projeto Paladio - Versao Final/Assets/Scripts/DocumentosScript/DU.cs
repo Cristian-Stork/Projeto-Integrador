@@ -106,7 +106,7 @@ public class DU : MonoBehaviour
                         break;
 
                     case "he":
-                        documentosText[i].text = "Boletim\nEsocolar";
+                        documentosText[i].text = "Boletim\nEscolar";
                         break;
 
                     case "cdr":

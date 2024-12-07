@@ -46,7 +46,29 @@ public class HistoricoEscolar : MonoBehaviour
     public void AtualizarHE()
     {
         nomeText.text = "Nome: " + Gerador.instance.nome + " " + Gerador.instance.sobrenome;
-        ddnText.text = "DDN: " + Gerador.instance.dia.ToString() + "/" + Gerador.instance.mes.ToString() + "/" + Gerador.instance.ano.ToString();
+
+        if (Gerador.instance.dia < 10)
+        {
+            ddnText.text = "DDN: " + "0" + Gerador.instance.dia.ToString();
+        }
+
+        else
+        {
+            ddnText.text = "DDN: " + Gerador.instance.dia.ToString();
+        }
+
+        if (Gerador.instance.mes < 10)
+        {
+            ddnText.text = ddnText.text + "/0" + Gerador.instance.mes.ToString();
+        }
+
+        else
+        {
+            ddnText.text = ddnText.text + "/" + Gerador.instance.mes.ToString();
+        }
+
+        ddnText.text = ddnText.text + "/" + Gerador.instance.ano.ToString();
+
         sexoText.text = "Sexo: " + Gerador.instance.sexo;
         linguagemText.text = "Linguagem: " + notaLinguagem.ToString();
         cieHumanasText.text = "Ciências humanas: " + notaCieHumanas.ToString();

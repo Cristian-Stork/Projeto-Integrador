@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Logic : MonoBehaviour
@@ -26,6 +27,9 @@ public class Logic : MonoBehaviour
     public GameObject avisoDespesasPanel;
     public GameObject aviso2DespesasPanel;
 
+    [Header("Texto")]
+    [SerializeField] private TextMeshProUGUI despesasText;
+
     public static Logic instance;
 
     // Start is called before the first frame update
@@ -37,6 +41,8 @@ public class Logic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        despesasText.text = "Fim do dia " + (numDoDia - 1);
+
         if (numDeCasos == numMaxDeCasos)
         {
             despesasCanvas.SetActive(true);

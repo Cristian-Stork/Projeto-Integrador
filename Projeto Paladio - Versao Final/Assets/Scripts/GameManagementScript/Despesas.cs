@@ -14,6 +14,9 @@ public class Despesas : MonoBehaviour
     [SerializeField] public int valorRemedio;
     [SerializeField] private int[] valorArray;
 
+    [SerializeField] private int valorGastos;
+    [SerializeField] private int valorResultado;
+
     [Header("Aumentos")]
     [SerializeField] private int aumentoDoPreco;
     [SerializeField] private int aumentoDoPrecoDevendo;
@@ -32,6 +35,13 @@ public class Despesas : MonoBehaviour
     public bool devendoRemedio;
     [SerializeField] private bool[] devendoArray;
 
+    [Header("Booleans de gastos")]
+    [SerializeField] private bool gastosLuz;
+    [SerializeField] private bool gastosAgua;
+    [SerializeField] private bool gastosComida;
+    [SerializeField] private bool gastosAluguel;
+    [SerializeField] private bool gastosRemedio;
+
     [Header("Dinheiro do Jogador")]
     public int economias;
     public int salario;
@@ -47,6 +57,8 @@ public class Despesas : MonoBehaviour
     [Header("Texto")]
     [SerializeField] private TextMeshProUGUI salarioText;
     [SerializeField] private TextMeshProUGUI economiasText;
+    [SerializeField] private TextMeshProUGUI gastosText;
+    [SerializeField] private TextMeshProUGUI resultadoText;
 
     [SerializeField] private TextMeshProUGUI valorLuzText;
     [SerializeField] private TextMeshProUGUI valorAguaText;
@@ -90,7 +102,61 @@ public class Despesas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        valorResultado = economias + salario - valorGastos;
+
+        gastosText.text = "Gastos: R$" + valorGastos;
+        resultadoText.text = "Resultado: R$" + valorResultado;
+
+        if (valorResultado < 0)
+            resultadoText.color = Color.red;
+
+        else
+            resultadoText.color = Color.black;
+
+        if (toggleLuz.isOn && gastosLuz == true)
+        {
+            valorGastos = Gastos(valorGastos, valorLuz, out gastosLuz);
+        }
+        else if (toggleLuz.isOn == false && gastosLuz == false)
+        {
+            valorGastos = DesGastos(valorGastos, valorLuz, out gastosLuz);
+        }
+
+        if (toggleAgua.isOn && gastosAgua == true)
+        {
+            valorGastos = Gastos(valorGastos, valorAgua, out gastosAgua);
+        }
+        else if (toggleAgua.isOn == false && gastosAgua == false)
+        {
+            valorGastos = DesGastos(valorGastos, valorAgua, out gastosAgua);
+        }
+
+        if (toggleComida.isOn && gastosComida == true)
+        {
+            valorGastos = Gastos(valorGastos, valorComida, out gastosComida);
+        }
+        else if (toggleComida.isOn == false && gastosComida == false)
+        {
+            valorGastos = DesGastos(valorGastos, valorComida, out gastosComida);
+        }
+
+        if (toggleAluguel.isOn && gastosAluguel == true)
+        {
+            valorGastos = Gastos(valorGastos, valorAluguel, out gastosAluguel);
+        }
+        else if (toggleAluguel.isOn == false && gastosAluguel == false)
+        {
+            valorGastos = DesGastos(valorGastos, valorAluguel, out gastosAluguel);
+        }
+
+        if (toggleRemedio.isOn && gastosRemedio == true)
+        {
+            valorGastos = Gastos(valorGastos, valorRemedio, out gastosRemedio);
+        }
+        else if (toggleRemedio.isOn == false && gastosRemedio == false)
+        {
+            valorGastos = DesGastos(valorGastos, valorRemedio, out gastosRemedio);
+        }
     }
 
     public void PassarValores()
@@ -256,6 +322,24 @@ public class Despesas : MonoBehaviour
     void DevendoDinheiro(TextMeshProUGUI text)
     {
         text.color = Color.red;
+    }
+
+    private int Gastos(int gastos, int valor, out bool jaSomouOut)
+    {
+        gastos += valor;
+
+        jaSomouOut = false;
+
+        return gastos;
+    }
+
+    private int DesGastos(int gastos, int valor, out bool jaSubtraiuOut)
+    {
+        gastos -= valor;
+
+        jaSubtraiuOut = true;
+
+        return gastos;
     }
 
     public void AumentarPrecos()
